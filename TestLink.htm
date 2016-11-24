@@ -17,7 +17,7 @@
         var ischrome = navigator.userAgent.match(/Chrome/) != null;
         var AppURL = scheme + "://openpage/" + id;
         var AndroidDownloadURL = "https://play.google.com/store/apps/details?id=" + androidPackageName;
-        var chromeUrl = "intent://#Intent;scheme="+scheme+";package="+androidPackageName+";end;";
+        var chromeUrl = "intent://openpage/" + id + "#Intent;scheme="+scheme+";package="+androidPackageName+";end;";
         var itunesUrl = "https://itunes.apple.com/tw/app/mz+dang-qi-za-zhi/id972558846?l=zh&mt=8";
 
         alert("isios = " + isios + "\nisandroid = " + isandroid + "\nischrome  = " + ischrome + "\nAppURL = " + AppURL + "\nAndroidDownloadURL = " + AndroidDownloadURL + "\nchromeUrl = " + chromeUrl + "\nitunesUrl = " + itunesUrl);
