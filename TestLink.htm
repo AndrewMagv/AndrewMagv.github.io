@@ -1,0 +1,75 @@
+
+<!-- saved from url=(0056)http://220.130.122.79/BrowserLaunchApp/MZPlus/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head runat="server"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>使用特定的URL開啟應用程式</title>
+    <script type="text/javascript">
+      function openOrDownloadURL() 
+      {
+        var id = "56091553658";
+        var androidPackageName = "com.magv.mzplus";
+        var scheme = "mzplus";
+
+        // var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        // var isiPhone = navigator.userAgent.match(/iPhone/i) != null;
+        var isios = navigator.userAgent.match(/(iPhone|iPod|iPad);?/i) != null;
+        var isandroid = navigator.userAgent.match(/Android/i) != null;
+        var ischrome = navigator.userAgent.match(/Chrome/) != null;
+        var AppURL = scheme + "://openpage/" + id;
+        var AndroidDownloadURL = "https://play.google.com/store/apps/details?id=" + androidPackageName;
+        var chromeUrl = "intent://#Intent;scheme="+scheme+";package="+androidPackageName+";end;";
+        var itunesUrl = "https://itunes.apple.com/tw/app/mz+dang-qi-za-zhi/id972558846?l=zh&mt=8";
+
+        alert("isios = " + isios + "\nisandroid = " + isandroid + "\nischrome  = " + ischrome + "\nAppURL = " + AppURL + "\nAndroidDownloadURL = " + AndroidDownloadURL + "\nchromeUrl = " + chromeUrl + "\nitunesUrl = " + itunesUrl);
+
+        if (isandroid) 
+        {
+          if (ischrome) 
+          {
+            window.location  = chromeUrl;
+          } 
+          else 
+          {
+            var iframe = document.createElement("iframe");
+            iframe.style.border = "none";
+            iframe.style.width = "1px";
+            iframe.style.height = "1px";
+            iframe.onload = function() 
+            {
+              window.location = AndroidDownloadURL;
+            };
+            iframe.src = AppURL;
+            document.body.appendChild(iframe);
+          }
+        }
+        else if(isios)
+        {
+
+            var iframe = document.createElement("iframe");
+            iframe.style.border = "none";
+            iframe.style.width = "1px";
+            iframe.style.height = "1px";
+            iframe.onload = function() 
+            {
+              window.location = "https://itunes.apple.com/tw/app/mz+dang-qi-za-zhi/id972558846?l=zh&mt=8";
+            };
+            iframe.src = AppURL;
+            document.body.appendChild(iframe);
+            
+          // setTimeout(function () 
+          // {
+          //   window.location = "https://itunes.apple.com/tw/app/mz+dang-qi-za-zhi/id972558846?l=zh&mt=8";
+          // }, 1000);
+          // window.location = AppURL;
+        }
+        else 
+        {
+          alert('Not a Mobile Device');
+        }
+      } 
+    </script>
+  </head>
+  <body>
+    <a href="javascript:openOrDownloadURL();"><font size="30">測試連結</font></a><br>
+  
+</body></html>
